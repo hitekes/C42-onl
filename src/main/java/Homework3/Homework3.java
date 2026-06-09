@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class Homework3 {
     public static void main(String[] args){
-        task1();
+        getEvenNumber();
         System.out.println("___________________________");
-        task2();
+        getTemperature();
         System.out.println("___________________________");
-        task3();
+        getSquare();
         System.out.println("___________________________");
-        task4();
+        getSequence();
         System.out.println("___________________________");
-        task5();
+        getSum();
     }
-    public static void task1(){
+    public static void getEvenNumber(){
         Scanner input = new Scanner(System.in);
         int a = input.nextInt();
         int b = a%2;
@@ -23,7 +23,7 @@ public class Homework3 {
         }
         else System.out.println("Число нечетное");
     }
-    public static void task2(){
+    public static void getTemperature(){
         Scanner input = new Scanner(System.in);
         int t = input.nextInt();
         if (t>-5){
@@ -33,21 +33,21 @@ public class Homework3 {
         } else
             System.out.println("Cold");
     }
-    public static void task3(){
+    public static void getSquare(){
         int a = 10;
         while(a<=20){
             System.out.println(a*a);
         a++;
         }
     }
-    public static void task4(){
+    public static void getSequence(){
         int a= 0;
         while(a<98){
             a+=7;
             System.out.println(a);
         }
     }
-    public static void task5(){
+    public static void getSum(){
         Scanner input = new Scanner(System.in);
         int b = 0;
         while (true) {
