@@ -4,13 +4,13 @@ import java.util.Scanner;
 
 public class Homework3 {
     public static void main(String[] args){
-//        task1();
+        task1();
         System.out.println("___________________________");
-//        task2();
+        task2();
         System.out.println("___________________________");
-//        task3();
+        task3();
         System.out.println("___________________________");
-//        task4();
+        task4();
         System.out.println("___________________________");
         task5();
     }
