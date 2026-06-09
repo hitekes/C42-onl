@@ -1,4 +1,4 @@
-package Homework;
+package Homework2;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
