@@ -50,16 +50,17 @@ public class Homework3 {
     public static void getSum(){
         Scanner input = new Scanner(System.in);
         int b = 0;
+        int a;
         while (true) {
-            int a = input.nextInt();
+            a = input.nextInt();
             if (a > 0) {
-                for (int j = 0; j < a; j++) {
-                    b = b + j;
-                }
                 break;
             } else {
                 System.out.println("Введите целое положительное число");
             }
+        }
+        for (int j = 0; j < a; j++) {
+            b = b + j;
         }
         System.out.println("Сумма чисел равна:" + b);
     }
