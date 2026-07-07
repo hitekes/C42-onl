@@ -1,7 +1,6 @@
 package TechAssign2;
 
 import java.util.Arrays;
-import java.util.Random;
 import java.util.Scanner;
 
 public class CrossesAndZeros {
@@ -55,7 +54,6 @@ public class CrossesAndZeros {
     }
 
     public static void game() {
-        boolean flag = true;
         int count = 9;
         while (count != 0) {
             fillBoard();
