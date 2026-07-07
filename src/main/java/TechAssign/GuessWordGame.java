@@ -75,7 +75,7 @@ public class GuessWordGame {
         return input;
     }
 
-    private static int processLetter(char letter, String secretWord, char[] guessedWord, int attempts) {
+    public static int processLetter(char letter, String secretWord, char[] guessedWord, int attempts) {
         if (!Character.isLetter(letter)) {
             System.out.println("Пожалуйста, введите букву");
             return attempts;
@@ -99,7 +99,7 @@ public class GuessWordGame {
         return attempts;
     }
 
-    private static int processWord(String input, String secretWord, int attempts) {
+    public static int processWord(String input, String secretWord, int attempts) {
         if (input.equals(secretWord)) {
             for (int i = 0; i < secretWord.length(); i++) {}
             return attempts;
@@ -110,7 +110,7 @@ public class GuessWordGame {
         }
     }
 
-    private static void printGameResult(boolean wordGuessed, String secretWord) {
+    public static void printGameResult(boolean wordGuessed, String secretWord) {
         if (wordGuessed) {
             System.out.println("\nПОЗДРАВЛЯЕМ! Вы угадали слово: " + secretWord + "!");
             System.out.println("Вы победили!");
@@ -120,7 +120,7 @@ public class GuessWordGame {
         }
     }
 
-    private static boolean askToPlayAgain(Scanner scanner) {
+    public static boolean askToPlayAgain(Scanner scanner) {
         System.out.println("\nХотите начать заново? (да/нет)");
 
         while (true) {
