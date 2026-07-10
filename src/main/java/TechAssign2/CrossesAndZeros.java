@@ -1,69 +1,136 @@
 package TechAssign2;
 
-import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 
 public class CrossesAndZeros {
-    private static char[][] board = new char[3][3];
     private static final char EMPTY = '.';
-    private static final char p1 = 'X';
-    private static final char p2 = 'O';
+    private static final char USER_SYMBOL = 'X';
+    private static final char AI_SYMBOL = 'O';
     private static final int SIZE = 3;
-
-
-    public static void main(String[] args) {
-        initBoard();
-        random();
-        fillBoard();
-        game();
-
-    }
+    private static final char[][] board = new char[SIZE][SIZE];
 
     public static void initBoard() {
         for (int i = 0; i < SIZE; i++) {
-            System.out.println();
             for (int j = 0; j < SIZE; j++) {
                 board[i][j] = EMPTY;
-                System.out.print(" " + board[i][j]);
+            }
+        }
+    }
+
+    public static void printBoard() {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                System.out.print(board[i][j] + " ");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static boolean isCellFree(int row, int col) {
+        if (row < 0 || row >= SIZE || col < 0 || col >= SIZE) {
+            return false;
+        }
+        return board[row][col] == EMPTY;
+    }
+
+    public static boolean checkWin(char symbol) {
+        for (int i = 0; i < SIZE; i++) {
+            if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol) {
+                return true;
+            }
+            if (board[0][i] == symbol && board[1][i] == symbol && board[2][i] == symbol) {
+                return true;
+            }
+        }
+
+        if (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) {
+            return true;
+        }
+        return board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol;
+    }
+
+    public static boolean isBoardFull() {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                if (board[i][j] == EMPTY) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void userMove() {
+        Scanner scanner = new Scanner(System.in);
+        boolean validMove = false;
+
+        while (!validMove) {
+            System.out.print("Введите строку (0-2): ");
+            int row = scanner.nextInt();
+
+            System.out.print("Введите столбец (0-2): ");
+            int col = scanner.nextInt();
+
+            if (!isCellFree(row, col)) {
+                System.out.println("Ошибка: клетка занята или не существует! Попробуйте снова.");
+                continue;
             }
 
+            board[row][col] = USER_SYMBOL;
+            validMove = true;
         }
     }
 
-    public static int random() {
-        int random = (int) (Math.random() * 3);
-        System.out.println(random);
-        return random;
+    public static void aiMove() {
+        Random random = new Random();
+        int row, col;
+
+        System.out.println("Ход искусственного интеллекта");
+        do {
+            row = random.nextInt(SIZE);
+            col = random.nextInt(SIZE);
+        } while (!isCellFree(row, col));
+
+        board[row][col] = AI_SYMBOL;
     }
 
-    public static void fillBoard() {
-        int i = random();
-        int j = random();
-        if (board[i][j] != p2 && board[i][j] != p1) {
-            board[i][j] = p1;
-        } else fillBoard();
+    public static boolean playGame() {
+        initBoard();
 
+        Random random = new Random();
+        boolean isUserTurn = random.nextBoolean();
 
-    }
+        System.out.println("\n=== НАЧАЛО ИГРЫ ===");
+        System.out.println("Первым ходит: " + (isUserTurn ? "Пользователь (X)" : "Искусственный интеллект (O)"));
+        printBoard();
 
-    public static void inputUser() {
-        Scanner input = new Scanner(System.in);
-        int a = input.nextInt();
-        int b = input.nextInt();
-        board[a][b] = p2;
-    }
+        while (true) {
+            if (isUserTurn) {
+                userMove();
+                printBoard();
 
-    public static void game() {
-        int count = 9;
-        while (count != 0) {
-            fillBoard();
-            count--;
-            inputUser();
-            count--;
-            System.out.println(Arrays.deepToString(board));
+                if (checkWin(USER_SYMBOL)) {
+                    System.out.println("ПОБЕДИЛ ПОЛЬЗОВАТЕЛЬ!");
+                    return true;
+                }
+            } else {
+                aiMove();
+                printBoard();
 
+                if (checkWin(AI_SYMBOL)) {
+                    System.out.println("ПОБЕДИЛ ИСКУССТВЕННЫЙ ИНТЕЛЛЕКТ!");
+                    return false;
+                }
+            }
+
+            if (isBoardFull()) {
+                System.out.println("НИЧЬЯ!");
+                return false;
+            }
+
+            isUserTurn = !isUserTurn;
         }
-
     }
-
 }
