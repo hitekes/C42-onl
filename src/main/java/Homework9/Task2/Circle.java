@@ -1,0 +1,21 @@
+package Homework9.Task2;
+
+public class Circle extends Figure {
+    public final double P = 3.14;
+    public double radius;
+
+    public Circle(double radius) {
+        super();
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return P * radius * radius;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * P * radius;
+    }
+}
