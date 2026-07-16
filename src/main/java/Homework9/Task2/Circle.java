@@ -5,7 +5,6 @@ public class Circle extends Figure {
     public double radius;
 
     public Circle(double radius) {
-        super();
         this.radius = radius;
     }
 

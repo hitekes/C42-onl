@@ -1,25 +1,24 @@
 package Homework9.Task2;
 
 public class Triangle extends Figure {
-    public double side1;
-    public double side2;
-    public double side3;
+    public double sideA;
+    public double sideB;
+    public double sideC;
 
     public Triangle(double side1, double side2, double side3) {
-        super();
-        this.side1 = side1;
-        this.side2 = side2;
-        this.side1 = side1;
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
     }
 
     @Override
     public double getArea() {
         double p = getPerimeter() / 2;
-        return Math.sqrt(p * (p - side1) * (p - side2) * (p - side3));
+        return Math.sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
     }
 
     @Override
     public double getPerimeter() {
-        return side1 + side2 + side3;
+        return sideA + sideB + sideC;
     }
 }
