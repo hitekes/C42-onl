@@ -10,7 +10,6 @@ public class Triangle extends Figure {
         this.sideB = sideB;
         this.sideC = sideC;
     }
-
     @Override
     public double getArea() {
         double p = getPerimeter() / 2;

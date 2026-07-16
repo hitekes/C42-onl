@@ -22,7 +22,7 @@ public class Main {
         }
 
         System.out.println("==============================================");
-        System.out.printf("Сумма периметров всех фигур: %.2f\n", totalPerimeter);
+        System.out.printf("Сумма периметров всех фигур:  %.2f", totalPerimeter);
     }
 }
 
